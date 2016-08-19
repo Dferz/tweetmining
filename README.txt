@@ -1,8 +1,4 @@
 |||GEMASTIK 9 DATA MINING - THE BIG OMEGA|||
-<<<<<<< HEAD
-=======
-Changelog : 19 - 08 - 2016 .
->>>>>>> upstream/master
 
 This is a READ ME file. 
 Instructions : 
@@ -10,7 +6,6 @@ Instructions :
 ***You can find all the files in src folder***
 
 ---VERSION 1---
-<<<<<<< HEAD
 1. Run search.php, after that you will get a .json file from Twitter. 
 2. Run cobaparsing.php, after that you will get a .csv file from a .json file that you get at step 1. 
    This is for removing the punctuations, mentions, and emoticons from tweets.
@@ -39,4 +34,3 @@ Note : If you already have a .csv training & testing file, you can skip to step 
 3. Run ver2.php, remember to put training.csv (your training set & testing set) in the same directory. 
    This is for removing the punctuations, mentions, and emoticons from tweets, stemming, stop words removal, and classification using Multinomial Naive Bayes Classifier.
    If you want to try, you can use combinetrain4.csv.  
->>>>>>> upstream/master
