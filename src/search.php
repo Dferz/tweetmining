@@ -17,11 +17,6 @@ function search(array $query)
 }
  
 $query = array(
-<<<<<<< HEAD
-  "q" => "kecelakaan",
-  "count" => 100,
-  "result_type" => "recent"
-=======
   //"q" => " kecelakaan -filter:retweets",
   "q" => " kecelakaan -filter:retweets",
   "since" => "2016-08-12",
@@ -30,7 +25,6 @@ $query = array(
   //"since_id" => "700000000000000000",
   "count" => 100,
   "include_entities" => "false"
->>>>>>> upstream/master
 );
 
 
@@ -59,11 +53,8 @@ foreach ($contentsDecoded['statuses'] as $tweet => $value) {
 header('Content-Type: application/json'); 
 $newResults= json_encode($contentsDecoded, JSON_PRETTY_PRINT);
 echo $newResults;
-<<<<<<< HEAD
-file_put_contents('tweets_training_h2.json', $newResults);
-=======
+
 file_put_contents('tweets_training_v5.json', $newResults);
->>>>>>> upstream/master
 
 ?>
 

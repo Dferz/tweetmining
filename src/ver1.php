@@ -1,9 +1,6 @@
 <?php 
-<<<<<<< HEAD
-=======
     namespace TweetMining;
     ini_set('max_execution_time',0);
->>>>>>> upstream/master
 	require_once __DIR__ . '/../vendor/autoload.php';
 	use Sastrawi\Stemmer\StemmerFactory;
 	use Sastrawi\StopWordRemover\StopWordRemoverFactory; 
@@ -16,11 +13,7 @@
 
     //load training set file
     $training = array();
-<<<<<<< HEAD
-    if (($handle = fopen("training.csv", "r")) !== FALSE) {
-=======
     if (($handle = fopen("combinetrain4.csv", "r")) !== FALSE) {
->>>>>>> upstream/master
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $training[] = $data;
         }
@@ -29,11 +22,7 @@
 
     //load testing set file
     $testing = array();
-<<<<<<< HEAD
-    if (($handle = fopen("testing.csv", "r")) !== FALSE) {
-=======
     if (($handle = fopen("combinetest.csv", "r")) !== FALSE) {
->>>>>>> upstream/master
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $testing[] = $data;
         }
@@ -49,18 +38,6 @@
 	$stopw = $stopwFactory->createStopWordRemover();
 
     //stem and remove stopwords training set 
-<<<<<<< HEAD
-	for($x = 0; $x < 80; $x++) {
-		$training[$x][1] = $stemmer->stem($training[$x][1]);
-		$training[$x][1] = $stopw->remove($training[$x][1]);
-		//echo $twoDarray[$x][1]."<br>";
-	}
-
-    //stem and remove stopwords testing set 
-	for($x = 0; $x < 14; $x++) {
-		$training[$x][1] = $stemmer->stem($training[$x][1]);
-		$training[$x][1] = $stopw->remove($training[$x][1]);
-=======
 	for($x = 0; $x < 600; $x++) {
         $training[$x][1] = preg_replace('/(?:https?|ftp):\/\/[\n\S]+/i', '', $training[$x][1]);
         $training[$x][1] = preg_replace('/\B@[a-z0-9_-]+/i', ' ', $training[$x][1]);
@@ -77,7 +54,6 @@
 	for($x = 0; $x < 90; $x++) {
 		$testing[$x][1] = $stemmer->stem($testing[$x][1]);
 		$testing[$x][1] = $stopw->remove($testing[$x][1]);
->>>>>>> upstream/master
 		//echo $twoDarray[$x][1]."<br>";
 	}
 
@@ -89,10 +65,8 @@
     // ---------- Training ----------------
     foreach ($training as $d)
     {
-<<<<<<< HEAD
-=======
+
         //echo $d[1] . " " . $d[2];
->>>>>>> upstream/master
         $tset->addDocument(
             $d[2], // class
             new TokensDocument(
@@ -109,35 +83,18 @@
     $cls = new MultinomialNBClassifier($ff,$model);
     $correct = 0;
     $counter = 0; 
-<<<<<<< HEAD
-=======
     
->>>>>>> upstream/master
     foreach ($testing as $d)
     {
         // predict if it is spam or ham
         $prediction = $cls->classify(
-<<<<<<< HEAD
-            array('terkait','tidakterkait'), // all possible classes
-=======
             array('T','F'), // all possible classes
->>>>>>> upstream/master
             new TokensDocument(
                 $tok->tokenize($d[1]) // The document
             )
         );
         if ($prediction==$d[2]) {
             $correct ++;
-<<<<<<< HEAD
-            printf($counter, " ");
-        }
-            
-        $counter ++;
-    }
-    
-    printf("Accuracy: %.2f\n", 100*$correct / count($testing));
-
-=======
             echo $d[1] . " " . $d[2] . "<br>";
         //     //printf($counter, " ");
         //     if($d[2] == 'terkait') {
@@ -273,5 +230,4 @@
             return false;
         }
     }
->>>>>>> upstream/master
 ?>
